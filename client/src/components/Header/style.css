@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    text-align: center;
+}
+
+h1 {
+    color:#f2f2f2;
+}

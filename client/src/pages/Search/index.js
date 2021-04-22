@@ -17,8 +17,8 @@ class Search extends Component {
 
     searchBooks = param => {
         API.search(param)
-            .then(results => {this.setState({books: results.data.items})})
-            .catch(err => console.log(err));
+          .then(results => {this.setState({books: results.data.items})})
+          .catch(err => console.log(err));
     }
 
     handleFormSubmit = () => {
@@ -26,6 +26,13 @@ class Search extends Component {
       this.setState({search: result});
       console.log(result);
       this.searchBooks(result);
+    }
+
+    saveBook = (props) => {
+      console.log(props); // Testing
+      API.saveBook(props)
+        .then(results => console.log(results))
+        .catch(err => console.log(err));
     }
 
     render() {
@@ -42,8 +49,9 @@ class Search extends Component {
             <div>
               <h3>Results</h3>
               {this.state.books.map(book => (
-                <div key={book.id}>
-                  <Book book={book}/>
+                <div className="card" key={book.id}>
+                  <Book book={book}
+                        save={this.saveBook}/>
                 </div>
 
               ))}
